@@ -1,8 +1,8 @@
-# 🩸 HEMATO-RISK: Evaluador Integrado de Riesgo Hematológico (v3 - Neumorfismo)
+# HEMATO-RISK: Evaluador Integrado de Riesgo Hematológico (v3 - Neumorfismo)
 
 **HEMATO-RISK** es una aplicación web interactiva y dinámica diseñada para profesionales de la salud. Permite la estratificación de riesgo rápida y precisa de pacientes hospitalizados o ambulatorios, integrando múltiples escalas de riesgo trombótico y hemorrágico en una única interfaz.
 
-## ✨ Características Principales
+## Características Principales
 
 * **Evaluación Multi-Escala:** Calcula simultáneamente las puntuaciones de las principales herramientas de riesgo.
 * **Diseño Neumórfico:** Interfaz de usuario moderna y limpia, optimizada para la claridad clínica.
@@ -11,7 +11,7 @@
 * **Persistencia de Datos:** Permite guardar las evaluaciones localmente en el navegador (`localStorage`).
 * **Exportación de Datos:** Funcionalidad para exportar el historial de evaluaciones a formato CSV (Excel) para análisis posteriores o integración con registros.
 
-## 📊 Escalas de Riesgo Incluidas
+## Escalas de Riesgo Incluidas
 
 La herramienta proporciona una evaluación integrada cubriendo cinco áreas clave:
 
@@ -23,7 +23,7 @@ La herramienta proporciona una evaluación integrada cubriendo cinco áreas clav
 | **IMPROVE Bleeding** | Hemorrágico | Riesgo de sangrado mayor. | Bajo, Alto. |
 | **Vienna** | Recurrencia de TEV | Riesgo de TEV recurrente (para seguimiento). | Bajo, Alto. |
 
-## 🚀 Uso e Instalación
+## Uso e Instalación
 
 Dado que **HEMATO-RISK** es un archivo HTML plano con CSS y JavaScript integrado, su uso es sumamente sencillo:
 
@@ -44,13 +44,13 @@ Para alojar esta herramienta en tu cuenta de GitHub, puedes seguir estos pasos:
 2.  Sube el archivo `HEMATO-RISK-v3.html` directamente a la raíz del repositorio usando la opción **"Add file" > "Upload files"**.
 3.  Activa **GitHub Pages** en la configuración del repositorio, seleccionando la rama `main` (o `master`) como fuente. Tu aplicación estará disponible en una URL pública (ej. `https://usuario.github.io/hemato-risk`).
 
-## ⚙️ Tecnologías
+## Tecnologías
 
 * **HTML5**
 * **CSS3** (Estilo Neumorfismo)
 * **JavaScript (Vanilla JS)** (Para todos los cálculos y la persistencia de datos)
 
-## ✍️ Autores y Referencias
+## Autores y Referencias
 
 ### Desarrolladores y Contribuyentes
 * MPSS Enrique Aguilar Camacho - Instituto Nacional de Cardiología Ignacio Chávez, Ciudad de México, México.
