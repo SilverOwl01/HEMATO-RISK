@@ -1,0 +1,1116 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HEMATO-RISK — Neumorphism Red</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* --- BASE NEUMORFISMO --- */
+    --bg: #e0e5ec;
+    --text-main: #4a5568;
+    --text-light: #a0aec0;
+    
+    /* Sombras Mágicas: Luz (arriba-izq) y Sombra (abajo-der) */
+    --shadow-light: #ffffff;
+    --shadow-dark: #a3b1c6;
+    
+    /* Efectos */
+    --shadow-out: 9px 9px 16px var(--shadow-dark), -9px -9px 16px var(--shadow-light);
+    --shadow-in: inset 6px 6px 10px var(--shadow-dark), inset -6px -6px 10px var(--shadow-light);
+    --shadow-btn: 6px 6px 10px var(--shadow-dark), -6px -6px 10px var(--shadow-light);
+    
+    /* --- PALETA HEMATOLOGÍA VIBRANTE --- */
+    --primary: #e61d2b; /* Rojo Sangre Principal */
+    
+    /* Colores para cada escala */
+    --col-caprini: #e61d2b;   /* Rojo */
+    --col-padua: #8e44ad;     /* Violeta Vibrante */
+    --col-imp-vte: #2980b9;   /* Azul Eléctrico */
+    --col-imp-bleed: #d35400; /* Naranja Óxido */
+    --col-vienna: #16a085;    /* Verde Esmeralda */
+
+    --radius: 20px;
+  }
+
+  * { box-sizing: border-box; }
+  
+  body {
+    margin: 0;
+    font-family: 'Nunito', sans-serif;
+    background-color: var(--bg);
+    color: var(--text-main);
+    line-height: 1.6;
+  }
+
+  /* --- HEADER --- */
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg);
+    padding: 15px 0;
+    box-shadow: 0 4px 15px rgba(163,177,198,0.3); /* Sombra suave flotante */
+  }
+  
+  .header-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+  
+  .brand {
+    font-weight: 900;
+    font-size: 22px;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    text-shadow: 1px 1px 1px #fff;
+  }
+  
+  .brand span {
+    font-size: 11px;
+    color: var(--primary);
+    border-radius: 50px;
+    padding: 4px 12px;
+    margin-left: 8px;
+    box-shadow: var(--shadow-in); /* Etiqueta hundida */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 800;
+  }
+
+  /* --- BOTONES NEUMÓRFICOS --- */
+  .btn {
+    appearance: none;
+    border: none;
+    outline: none;
+    background: var(--bg);
+    color: var(--text-main);
+    padding: 10px 20px;
+    border-radius: 50px; /* Pill shape */
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: var(--shadow-btn);
+    transition: all 0.2s ease;
+    font-family: 'Nunito', sans-serif;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .btn:hover {
+    transform: translateY(-2px);
+    color: var(--primary);
+  }
+
+  .btn:active {
+    box-shadow: var(--shadow-in); /* Efecto presionado */
+    transform: translateY(0);
+  }
+
+  .btn.primary {
+    color: var(--primary);
+    font-weight: 800;
+    border: 1px solid transparent;
+  }
+  /* Estado especial para botón primario presionado */
+  .btn.primary:active {
+    color: #b91621;
+  }
+
+  /* --- LAYOUT --- */
+  .wrap {
+    max-width: 1120px;
+    margin: 40px auto;
+    padding: 0 20px 60px;
+  }
+
+  .card {
+    background: var(--bg);
+    border-radius: var(--radius);
+    padding: 35px;
+    margin-bottom: 30px;
+    box-shadow: var(--shadow-out); /* Tarjeta elevada */
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+
+  h1 { 
+    font-size: 28px; 
+    color: var(--text-main); 
+    font-weight: 900; 
+    margin-top: 0;
+    text-shadow: 1px 1px 0 #fff;
+  }
+  
+  h2 {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  p { color: var(--text-light); font-weight: 600; }
+
+  /* --- INPUTS (HUNDIDOS) --- */
+  label {
+    display: block;
+    font-size: 13px;
+    color: var(--text-light);
+    font-weight: 700;
+    margin-bottom: 8px;
+    margin-left: 10px; /* Alinear con el redondeo del input */
+  }
+
+  input[type="text"], 
+  input[type="number"], 
+  input[type="date"], 
+  select {
+    width: 100%;
+    height: 48px;
+    padding: 0 20px;
+    border: none;
+    border-radius: 50px; /* Pill inputs como en la imagen */
+    background: var(--bg);
+    box-shadow: var(--shadow-in); /* Efecto Hundido */
+    color: var(--text-main);
+    font-family: 'Nunito', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    outline: none;
+    transition: box-shadow 0.2s ease;
+  }
+
+  input:focus, select:focus {
+    box-shadow: inset 2px 2px 5px var(--shadow-dark), inset -2px -2px 5px var(--shadow-light), 0 0 0 2px var(--primary); /* Sutil glow rojo */
+  }
+
+  .grid { display: grid; gap: 20px; }
+  .g2 { grid-template-columns: repeat(2, 1fr); }
+  .g3 { grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: 768px) { .g2, .g3 { grid-template-columns: 1fr; } }
+
+  /* --- KPIs / RESULTADOS PEQUEÑOS --- */
+  .kpis {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 25px;
+  }
+  @media (max-width: 768px) { .kpis { grid-template-columns: 1fr; } }
+
+  .kpi {
+    padding: 15px;
+    border-radius: 20px;
+    background: var(--bg);
+    box-shadow: var(--shadow-out);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .kpi b { font-size: 12px; color: var(--text-light); margin-bottom: 5px; text-transform: uppercase; }
+  .kpi span { font-size: 18px; font-weight: 800; color: var(--text-main); }
+
+  /* --- CHECKBOXES (Estilo Botón Toggle) --- */
+  .checks-group {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 20px;
+    /* Agrupador sutilmente hundido o plano */
+    /* box-shadow: var(--shadow-in); */ 
+  }
+  
+  .checks-title {
+    color: var(--text-main);
+    font-size: 15px;
+    font-weight: 800;
+    margin: 0 0 15px 10px;
+  }
+
+  .checks-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+  }
+  @media (max-width: 1000px){ .checks-grid{ grid-template-columns: repeat(2,1fr); } }
+  @media (max-width: 600px){ .checks-grid{ grid-template-columns: 1fr; } }
+
+  .check {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    background: var(--bg);
+    border-radius: 15px;
+    box-shadow: var(--shadow-out);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-main);
+    user-select: none;
+  }
+
+  .check:hover {
+    transform: translateY(-2px);
+  }
+  
+  /* Escondemos el checkbox real */
+  .check input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  /* Indicador visual personalizado (punto) */
+  .check::before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ccc;
+    box-shadow: inset 1px 1px 3px rgba(0,0,0,0.2);
+    margin-right: 12px;
+    transition: background 0.3s;
+    flex-shrink: 0;
+  }
+
+  /* Estado SELECCIONADO */
+  .check:has(input:checked) {
+    box-shadow: var(--shadow-in); /* Se hunde al seleccionarse */
+    color: var(--primary);
+  }
+  
+  .check:has(input:checked)::before {
+    background: var(--primary);
+    box-shadow: 0 0 5px var(--primary); /* Glow */
+  }
+
+  /* Checks automáticos deshabilitados */
+  .check:has(input:disabled) {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  /* --- TARJETAS DE RESULTADOS PERSONALIZADAS --- */
+  /* Clases de utilidad para colores */
+  .res-card h2 { margin-bottom: 0; }
+  
+  .card.caprini-style { border-left: 5px solid var(--col-caprini); }
+  .card.caprini-style h2 { color: var(--col-caprini); }
+  .card.caprini-style .kpi span { color: var(--col-caprini); }
+  
+  .card.padua-style { border-left: 5px solid var(--col-padua); }
+  .card.padua-style h2 { color: var(--col-padua); }
+  .card.padua-style .kpi span { color: var(--col-padua); }
+  
+  .card.improve-vte-style { border-left: 5px solid var(--col-imp-vte); }
+  .card.improve-vte-style h2 { color: var(--col-imp-vte); }
+  .card.improve-vte-style .kpi span { color: var(--col-imp-vte); }
+  
+  .card.improve-bleed-style { border-left: 5px solid var(--col-imp-bleed); }
+  .card.improve-bleed-style h2 { color: var(--col-imp-bleed); }
+  .card.improve-bleed-style .kpi span { color: var(--col-imp-bleed); }
+
+  .card.vienna-style { border-left: 5px solid var(--col-vienna); }
+  .card.vienna-style h2 { color: var(--col-vienna); }
+  .card.vienna-style .kpi span { color: var(--col-vienna); }
+
+
+  /* Pills de riesgo */
+  .pill {
+    display: inline-block;
+    padding: 4px 15px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    box-shadow: var(--shadow-in); /* Pill hundida */
+    background: var(--bg);
+  }
+  /* Sobrescribimos colores de riesgo con la lógica de semáforo, pero estilo soft */
+  .pill.low { color: #10b981; }
+  .pill.mod { color: #f59e0b; }
+  .pill.high { color: #e61d2b; text-shadow: 0 0 5px rgba(230, 29, 43, 0.3); }
+
+  .caprini-grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 20px 0;
+  }
+
+  /* Trazabilidad (Accordion) */
+  .trace {
+    border-radius: 15px;
+    box-shadow: var(--shadow-in); /* Contenedor hundido para texto */
+    background: var(--bg);
+    overflow: hidden;
+    margin-top: 15px;
+  }
+  .trace summary {
+    padding: 15px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--text-light);
+    outline: none;
+  }
+  .trace pre {
+    padding: 0 20px 20px;
+    margin: 0;
+    font-size: 13px;
+    color: var(--text-main);
+    white-space: pre-wrap;
+  }
+
+  .actions {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    padding-bottom: 40px;
+    justify-content: center;
+  }
+  
+  .msg {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+    font-weight: 700;
+  }
+  .msg.ok { color: #10b981; }
+  .msg.warn { color: #f59e0b; }
+
+</style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <div class="brand">HEMATO-RISK <span>Neumorph</span></div>
+      <div>
+        <button id="btnCalcular_top" class="btn primary" type="button">Calcular</button>
+        <button id="btnGuardar_top" class="btn" type="button">Guardar</button>
+        <button id="btnExportar_top" class="btn" type="button">Exportar</button>
+        <button id="btnLimpiar_top" class="btn" type="button">Limpiar</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <section class="card">
+      <h1>Evaluador integrado de riesgo trombótico y hemorrágico</h1>
+      <p>Herramienta clínica para estratificación precisa.</p>
+
+      <h2>Identificación</h2>
+      <div class="grid g3">
+        <div>
+          <label>Nombre(s)</label>
+          <input id="nombre" type="text" placeholder="Ej. Juan Carlos">
+        </div>
+        <div>
+          <label>Apellido paterno</label>
+          <input id="ap_pat" type="text" placeholder="Ej. Ramírez">
+        </div>
+        <div>
+          <label>Apellido materno</label>
+          <input id="ap_mat" type="text" placeholder="Ej. Ortega">
+        </div>
+      </div>
+
+      <h2 style="margin-top:30px">Datos básicos</h2>
+      <div class="grid g3">
+        <div>
+          <label>Sexo</label>
+          <select id="sexo"><option value="M">Masculino</option><option value="F">Femenino</option></select>
+        </div>
+        <div>
+          <label>Fecha de nacimiento</label>
+          <input id="dob" type="date">
+        </div>
+        <div>
+          <label>Fecha de evaluación</label>
+          <input id="doe" type="date">
+        </div>
+        <div>
+          <label>Peso (kg)</label>
+          <input id="peso" type="number" min="0" step="0.1" placeholder="0.0">
+        </div>
+        <div>
+          <label>Talla (cm)</label>
+          <input id="talla" type="number" min="0" step="0.1" placeholder="0">
+        </div>
+        <div>
+          <label>Creatinina (mg/dL)</label>
+          <input id="cr" type="number" min="0" step="0.01" placeholder="0.00">
+        </div>
+        <div>
+          <label>Plaquetas (×10⁹/L)</label>
+          <input id="plaquetas" type="number" min="0" step="1" placeholder="0">
+        </div>
+        <div>
+          <label>INR</label>
+          <input id="inr" type="number" min="0" step="0.01" placeholder="0.0">
+        </div>
+        <div>
+          <label>D-dímero</label>
+          <input id="dd" type="number" min="0" step="0.01" placeholder="ng/mL">
+        </div>
+        <div>
+          <label>Loc. TEV (Vienna)</label>
+          <select id="vienna_loc"><option value="distal">Distal</option><option value="proximal">Proximal</option><option value="ep">Embolia pulmonar</option></select>
+        </div>
+      </div>
+
+      <div class="kpis">
+        <div class="kpi"><b>ID paciente</b><span id="kID">—</span></div>
+        <div class="kpi"><b>Edad</b><span id="kEdad">—</span></div>
+        <div class="kpi"><b>IMC</b><span id="kIMC">—</span></div>
+        <div class="kpi"><b>ClCr (mL/min)</b><span id="kCG">—</span></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Checklists Clínicos</h2>
+
+      <div class="checks-group">
+        <h3 class="checks-title">1) Demográficos y Ginecobstétricos</h3>
+        <div class="checks-grid">
+          <label class="check"><input type="checkbox" data-key="embarazo_puerperio"> <span>Embarazo / puerperio</span></label>
+          <label class="check"><input type="checkbox" data-key="aco_trh"> <span>Uso de ACO / TRH</span></label>
+          <label class="check"><input type="checkbox" data-key="obst_adversa_hist"> <span>Antecedentes obstétricos</span></label>
+        </div>
+      </div>
+
+      <div class="checks-group">
+        <h3 class="checks-title">2) Cálculos Automáticos</h3>
+        <div class="checks-grid">
+          <label class="check">
+            <input type="checkbox" data-key="auto_imc_30" disabled> 
+            <span>Obesidad (IMC ≥ 30)</span>
+          </label>
+          <label class="check">
+            <input type="checkbox" data-key="auto_ren_mod" disabled> 
+            <span>Falla Renal Mod.</span>
+          </label>
+          <label class="check">
+            <input type="checkbox" data-key="auto_ren_sev" disabled> 
+            <span>Falla Renal Sev.</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="checks-group">
+        <h3 class="checks-title">3) Situación Clínica</h3>
+        <div class="checks-grid">
+          <label class="check"><input type="checkbox" data-key="uci"> <span>Ingreso a UCI</span></label>
+          <label class="check"><input type="checkbox" data-key="infeccion_grave"> <span>Infección grave</span></label>
+          <label class="check"><input type="checkbox" data-key="sepsis_reciente"> <span>Sepsis &lt; 1 mes</span></label>
+          <label class="check"><input type="checkbox" data-key="iam_reciente"> <span>IAM reciente</span></label>
+          <label class="check"><input type="checkbox" data-key="acv"> <span>ACV reciente</span></label>
+          <label class="check"><input type="checkbox" data-key="mov_reducida"> <span>Movilidad reducida</span></label>
+          <label class="check"><input type="checkbox" data-key="cama_72h"> <span>En cama ≥ 72 h</span></label>
+          <label class="check"><input type="checkbox" data-key="yeso"> <span>Yeso / inmovilización</span></label>
+          <label class="check"><input type="checkbox" data-key="cvc"> <span>Catéter central (CVC)</span></label>
+        </div>
+      </div>
+
+      <div class="checks-group">
+        <h3 class="checks-title">4) Comorbilidades</h3>
+        <div class="checks-grid">
+          <label class="check"><input type="checkbox" data-key="icc"> <span>Insuficiencia cardiaca</span></label>
+          <label class="check"><input type="checkbox" data-key="epoc"> <span>EPOC</span></label>
+          <label class="check"><input type="checkbox" data-key="insuf_hepatica"> <span>Insuficiencia hepática</span></label>
+          <label class="check"><input type="checkbox" data-key="enf_reumatologica"> <span>Enf. reumatológica</span></label>
+          <label class="check"><input type="checkbox" data-key="diabetes_insulina"> <span>Diabetes c/ insulina</span></label>
+          <label class="check"><input type="checkbox" data-key="tabaquismo"> <span>Fumador activo</span></label>
+          <label class="check"><input type="checkbox" data-key="cancer_activo"> <span>Cáncer activo</span></label>
+          <label class="check"><input type="checkbox" data-key="ibd"> <span>Enf. Inflamatoria Intestinal</span></label>
+        </div>
+      </div>
+
+      <div class="checks-group">
+        <h3 class="checks-title">5) Hematología</h3>
+        <div class="checks-grid">
+          <label class="check"><input type="checkbox" data-key="sangrado_3m"> <span>Sangrado &lt; 3 meses</span></label>
+          <label class="check"><input type="checkbox" data-key="ulcera_activa"> <span>Úlcera activa</span></label>
+          <label class="check"><input type="checkbox" data-key="trombofilia"> <span>Trombofilia conocida</span></label>
+          <label class="check"><input type="checkbox" data-key="transfusion_reciente"> <span>Transfusión reciente</span></label>
+          <label class="check"><input type="checkbox" data-key="quimioterapia"> <span>Quimioterapia</span></label>
+        </div>
+      </div>
+
+      <div class="checks-group">
+        <h3 class="checks-title">6) Antecedentes</h3>
+        <div class="checks-grid">
+          <label class="check"><input type="checkbox" data-key="tev_prev"> <span>TEV previo</span></label>
+          <label class="check"><input type="checkbox" data-key="svt_prev"> <span>SVT previa</span></label>
+          <label class="check"><input type="checkbox" data-key="cancer_prev"> <span>Historial de cáncer</span></label>
+          <label class="check"><input type="checkbox" data-key="familiar_tev"> <span>Antecedente familiar TEV</span></label>
+          <label class="check"><input type="checkbox" data-key="lesion_medular"> <span>Lesión medular</span></label>
+          <label class="check"><input type="checkbox" data-key="paralisis_mmii"> <span>Parálisis MMII</span></label>
+        </div>
+      </div>
+
+      <div class="checks-group">
+        <h3 class="checks-title">7) Signos</h3>
+        <div class="checks-grid">
+          <label class="check"><input type="checkbox" data-key="varices"> <span>Várices</span></label>
+          <label class="check"><input type="checkbox" data-key="edema_mmii"> <span>Edema MMII</span></label>
+        </div>
+      </div>
+
+      <div class="checks-group">
+        <h3 class="checks-title">8) Cirugía y Trauma</h3>
+        <div class="checks-grid">
+          <label class="check"><input type="checkbox" data-key="artroplastia"> <span>Artroplastia</span></label>
+          <label class="check"><input type="checkbox" data-key="fractura_mayor"> <span>Fractura mayor</span></label>
+          <label class="check"><input type="checkbox" data-key="trauma_mayor"> <span>Trauma mayor</span></label>
+          <label class="check"><input type="checkbox" data-key="cx_mayor"> <span>Cirugía mayor abierta</span></label>
+          <label class="check"><input type="checkbox" data-key="laparo_45"> <span>Laparoscopía &gt; 45 min</span></label>
+          <label class="check"><input type="checkbox" data-key="cirugia_menor"> <span>Cirugía menor</span></label>
+          <label class="check"><input type="checkbox" data-key="cirugia_mayor_ult_mes"> <span>Cx mayor último mes</span></label>
+          <label class="check"><input type="checkbox" data-key="cirugia_gt_2h"> <span>Cirugía &gt; 2 h</span></label>
+          <label class="check"><input type="checkbox" data-key="artroscopia"> <span>Artroscopía</span></label>
+        </div>
+      </div>
+    </section>
+
+    <section class="card res-card caprini-style">
+      <h2>Resultados — Caprini</h2>
+      <div class="caprini-grid">
+        <div class="kpi"><b>Puntaje</b><span id="capriniScore">0</span></div>
+        <div class="kpi"><b>Riesgo</b><span id="capriniRisk" class="pill">—</span></div>
+      </div>
+      <details class="trace">
+        <summary>Detalle de puntos</summary>
+        <pre id="capriniTrace">—</pre>
+      </details>
+    </section>
+
+    <section class="card res-card padua-style">
+      <h2>Resultados — PADUA</h2>
+      <div class="caprini-grid">
+        <div class="kpi"><b>Puntaje</b><span id="paduaScore">0</span></div>
+        <div class="kpi"><b>Riesgo</b><span id="paduaRisk" class="pill">—</span></div>
+      </div>
+      <details class="trace">
+        <summary>Detalle de puntos</summary>
+        <pre id="paduaTrace">—</pre>
+      </details>
+    </section>
+
+    <section class="card res-card improve-vte-style">
+      <h2>Resultados — IMPROVE VTE</h2>
+      <div class="caprini-grid">
+        <div class="kpi"><b>Puntaje</b><span id="improveVteScore">0</span></div>
+        <div class="kpi"><b>Riesgo</b><span id="improveVteRisk" class="pill">—</span></div>
+      </div>
+      <details class="trace">
+        <summary>Detalle de puntos</summary>
+        <pre id="improveVteTrace">—</pre>
+      </details>
+    </section>
+
+    <section class="card res-card improve-bleed-style">
+      <h2>Resultados — IMPROVE Bleeding</h2>
+      <div class="caprini-grid">
+        <div class="kpi"><b>Puntaje</b><span id="improveBleedScore">0</span></div>
+        <div class="kpi"><b>Riesgo</b><span id="improveBleedRisk" class="pill">—</span></div>
+      </div>
+      <details class="trace">
+        <summary>Detalle de puntos</summary>
+        <pre id="improveBleedTrace">—</pre>
+      </details>
+    </section>
+
+    <section class="card res-card vienna-style">
+      <h2>Resultados — Vienna</h2>
+      <div class="caprini-grid">
+        <div class="kpi"><b>Puntaje</b><span id="viennaScore">0</span></div>
+        <div class="kpi"><b>Riesgo</b><span id="viennaRisk" class="pill">—</span></div>
+      </div>
+      <details class="trace">
+        <summary>Detalle de puntos</summary>
+        <pre id="viennaTrace">—</pre>
+      </details>
+    </section>
+
+    <div class="actions">
+      <button id="btnCalcular" class="btn primary" type="button">CALCULAR TODO</button>
+      <button id="btnGuardar" class="btn" type="button">Guardar</button>
+      <button id="btnExportar" class="btn" type="button">Exportar Excel</button>
+      <button id="btnLimpiar" class="btn" type="button">Limpiar</button>
+      <span id="msg" class="msg" aria-live="polite"></span>
+    </div>
+    <section class="card">
+      <h2 style="color:var(--text-main)">Autores</h2>
+      <ol style="font-size:13px; color:var(--text-light); padding-left:20px"></ol>
+      </li>MPSS Enrique Aguilar Camacho - Instituto Nacional de Cardiología Ignacio Chávez, Ciudad de México, México.</li>
+      <li> Dr.Flavio A. Grimaldo Gómez - Instituto Nacional de Cardiología Ignacio Chávez, Ciudad de México, México.</li>
+    </section>
+    
+    <section class="card">
+      <h2 style="color:var(--text-main)">Referencias</h2>
+      <ol style="font-size:13px; color:var(--text-light); padding-left:20px">
+        <li>Cronin, M., et al. (2019). Completion of the updated Caprini risk assessment model (2013 version).</li>
+        <li>Decousus, H., et al. (2011). IMPROVE Bleeding Risk. Chest.</li>
+        <li>Spyropoulos, A. C., et al. (2011). IMPROVE VTE Risk. Chest.</li>
+        <li>Barbar, S., et al. (2010). Padua Prediction Score. J Thromb Haemost.</li>
+      </ol>
+    </section>
+  </div>
+
+<script>
+  // ===== LÓGICA INTACA (Sin cambios en JS) =====
+  const round = (x, d=2) => (x==null || Number.isNaN(x)) ? null : Math.round(x*10**d)/10**d;
+
+  function storageAvailable(type) {
+    try {
+      const storage = window[type];
+      const testKey = '__hematorisk_test__';
+      storage.setItem(testKey, 'ok');
+      storage.removeItem(testKey);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function yearsBetween(d1, d2){
+    if(!d1 || !d2) return null;
+    const a = new Date(d1), b = new Date(d2);
+    if(isNaN(a) || isNaN(b) || b < a) return null;
+    let y = b.getFullYear() - a.getFullYear();
+    const m = b.getMonth() - a.getMonth();
+    if(m < 0 || (m===0 && b.getDate() < a.getDate())) y--;
+    return y;
+  }
+
+  function computeIMC(pesoKg, tallaCm){
+    if(!pesoKg || !tallaCm || pesoKg<=0 || tallaCm<=120) return null;
+    const m = tallaCm/100;
+    return pesoKg/(m*m);
+  }
+
+  function cockcroftGault(edad, pesoKg, cr, sexo){
+    if(edad==null || !pesoKg || !cr || edad<=0 || pesoKg<=0 || cr<=0) return null;
+    let cg = ((140 - edad) * pesoKg) / (72 * cr);
+    if(sexo === 'F') cg *= 0.85;
+    return cg;
+  }
+
+  function three(str){
+    if(!str) return 'XXX';
+    const s = str.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-zA-Z]/g,'').toUpperCase();
+    return (s + 'XXX').slice(0,3);
+  }
+
+  function buildPatientID(dob, nombre, ap_pat, ap_mat){
+    if(!dob) return '—';
+    const d = new Date(dob);
+    if(isNaN(d)) return '—';
+    const y = d.getFullYear().toString().padStart(4,'0');
+    const m = (d.getMonth()+1).toString().padStart(2,'0');
+    const da = d.getDate().toString().padStart(2,'0');
+    return `${y}${m}${da}-${three(nombre)}-${three(ap_pat)}-${three(ap_mat)}`;
+  }
+
+  function collectState(){
+    const state = {
+      nombre: (document.getElementById('nombre').value || '').trim(),
+      ap_pat: (document.getElementById('ap_pat').value || '').trim(),
+      ap_mat: (document.getElementById('ap_mat').value || '').trim(),
+      sexo: document.getElementById('sexo').value,
+      dob:  document.getElementById('dob').value || null,
+      doe:  document.getElementById('doe').value || null,
+      peso: parseFloat(document.getElementById('peso').value),
+      talla:parseFloat(document.getElementById('talla').value),
+      cr:   parseFloat(document.getElementById('cr').value),
+      plaquetas: parseFloat(document.getElementById('plaquetas').value),
+      inr: parseFloat(document.getElementById('inr').value),
+      dd: parseFloat(document.getElementById('dd').value),
+      vienna_loc: document.getElementById('vienna_loc').value,
+      edad: null, imc: null, cg: null,
+      flags: {}
+    };
+
+    state.edad = yearsBetween(state.dob, state.doe);
+    state.imc  = computeIMC(state.peso, state.talla);
+    state.cg   = cockcroftGault(state.edad, state.peso, state.cr, state.sexo);
+
+    document.querySelectorAll('input[type="checkbox"][data-key]').forEach(ch=>{
+      state.flags[ch.dataset.key] = ch.checked;
+    });
+
+    state.patient_id = buildPatientID(state.dob, state.nombre, state.ap_pat, state.ap_mat);
+    return state;
+  }
+
+  function paintKPIs(){
+    const s = collectState();
+    
+    document.getElementById('kID').textContent   = s.patient_id || '—';
+    document.getElementById('kEdad').textContent = (s.edad ?? '—');
+    document.getElementById('kIMC').textContent  = (s.imc!=null ? round(s.imc,2) : '—');
+    document.getElementById('kCG').textContent   = (s.cg!=null ? round(s.cg,1) : '—');
+
+    const setCheck = (key, condition) => {
+      const el = document.querySelector(`input[data-key="${key}"]`);
+      if(el) {
+        el.checked = condition;
+      }
+    };
+
+    setCheck('auto_imc_30', (s.imc !== null && s.imc >= 30));
+    setCheck('auto_ren_mod', (s.cg !== null && s.cg >= 30 && s.cg < 60));
+    setCheck('auto_ren_sev', (s.cg !== null && s.cg < 30));
+  }
+
+  const CAPRINI_RULES = [
+    {id:'age_41_60', peso:1, cond:s=> s.edad!=null && s.edad>=41 && s.edad<=60},
+    {id:'minor_surg_lt45', peso:1, cond:s=> !!s.flags.cirugia_menor},
+    {id:'bmi_gt_25', peso:1, cond:s=> s.imc!=null && s.imc>=25},
+    {id:'history_prior_major_surg', peso:1, cond:s=> !!s.flags.cirugia_mayor_ult_mes},
+    {id:'leg_swelling_edema', peso:1, cond:s=> !!s.flags.edema_mmii},
+    {id:'varicose_veins', peso:1, cond:s=> !!s.flags.varices},
+    {id:'sepsis_lt1m', peso:1, cond:s=> !!s.flags.sepsis_reciente || !!s.flags.infeccion_grave},
+    {id:'abnormal_pulmonary_function', peso:1, cond:s=> !!s.flags.epoc},
+    {id:'recent_mi_lt1m', peso:1, cond:s=> !!s.flags.iam_reciente},
+    {id:'chf_lt1m', peso:1, cond:s=> !!s.flags.icc},
+    {id:'history_ibd', peso:1, cond:s=> !!s.flags.ibd},
+    {id:'medical_patient_bed_rest', peso:1, cond:s=> !!s.flags.mov_reducida && !s.flags.cama_72h},
+    {id:'pregnancy_puerperium', peso:1, cond:s=> s.sexo==='F' && !!s.flags.embarazo_puerperio},
+    {id:'obstetric_adverse_history', peso:1, cond:s=> s.sexo==='F' && !!s.flags.obst_adversa_hist},
+    {id:'hormonal_aco_trh', peso:1, cond:s=> s.sexo==='F' && !!s.flags.aco_trh},
+    {id:'age_60_74', peso:2, cond:s=> s.edad!=null && s.edad>=60 && s.edad<=74},
+    {id:'arthroscopic_surgery', peso:2, cond:s=> !!s.flags.artroscopia},
+    {id:'major_open_surgery_gt45', peso:2, cond:s=> !!s.flags.cx_mayor},
+    {id:'lap_surgery_gt45', peso:2, cond:s=> !!s.flags.laparo_45},
+    {id:'malignancy_combined', peso:2, cond:s=> !!s.flags.cancer_prev || !!s.flags.cancer_activo},
+    {id:'bed_rest_ge72h', peso:2, cond:s=> !!s.flags.cama_72h},
+    {id:'nonremovable_cast', peso:2, cond:s=> !!s.flags.yeso},
+    {id:'cvc_port_picc_last_month', peso:2, cond:s=> !!s.flags.cvc},
+    {id:'present_chemotherapy', peso:2, cond:s=> !!s.flags.quimioterapia},
+    {id:'age_ge_75', peso:3, cond:s=> s.edad!=null && s.edad>=75},
+    {id:'personal_hist_vte', peso:3, cond:s=> !!s.flags.tev_prev},
+    {id:'family_hist_vte', peso:3, cond:s=> !!s.flags.familiar_tev},
+    {id:'thrombophilia', peso:3, cond:s=> !!s.flags.trombofilia},
+    {id:'stroke_last_month', peso:5, cond:s=> !!s.flags.acv},
+    {id:'elective_major_artroplasty', peso:5, cond:s=> !!s.flags.artroplastia},
+    {id:'major_fracture_hip_pelvis_leg', peso:5, cond:s=> !!s.flags.fractura_mayor},
+    {id:'spinal_cord_injury_paralysis', peso:5, cond:s=> !!s.flags.lesion_medular || !!s.flags.paralisis_mmii},
+    {id:'major_trauma_polytrauma', peso:5, cond:s=> !!s.flags.trauma_mayor}
+  ];
+
+  function capriniSum(s){
+    let score = 0, fired = [];
+    for(const r of CAPRINI_RULES){ try{ if(r.cond(s)){ score+=r.peso; fired.push(`${r.peso}p → ${r.id}`); } }catch(_){ } }
+    return {score, fired};
+  }
+  function capriniRiskLabel(score){
+    if(score===0) return {label:'Muy bajo', cls:'low'};
+    if(score<=2) return {label:'Bajo', cls:'low'};
+    if(score<=4) return {label:'Moderado', cls:'mod'};
+    return {label:'Alto', cls:'high'};
+  }
+  function computeCapriniAndPaint(){
+    const s = collectState();
+    const {score, fired} = capriniSum(s);
+    const rk = capriniRiskLabel(score);
+    document.getElementById('capriniScore').textContent = score;
+    const pill=document.getElementById('capriniRisk'); pill.textContent=rk.label; pill.className='pill '+rk.cls;
+    document.getElementById('capriniTrace').textContent = fired.length? fired.join('\n') : '—';
+    return {score, risk: rk.label, trace: fired};
+  }
+
+  const PADUA_RULES = [
+    {id:'cancer_activo', peso:3, cond:s=> !!s.flags.cancer_activo},
+    {id:'tev_prev', peso:3, cond:s=> !!s.flags.tev_prev},
+    {id:'movilidad_reducida', peso:3, cond:s=> !!s.flags.mov_reducida || !!s.flags.cama_72h},
+    {id:'trombofilia_hereditaria', peso:3, cond:s=> !!s.flags.trombofilia},
+    {id:'trauma_cirugia_reciente', peso:2, cond:s=> !!s.flags.trauma_mayor || !!s.flags.cirugia_mayor_ult_mes},
+    {id:'edad_ge_70', peso:1, cond:s=> s.edad!=null && s.edad>=70},
+    {id:'corazon_respiratorio', peso:1, cond:s=> !!s.flags.icc || !!s.flags.epoc},
+    {id:'iam_avc_agudo', peso:1, cond:s=> !!s.flags.iam_reciente || !!s.flags.acv},
+    {id:'infeccion_aguda_reumato', peso:1, cond:s=> !!s.flags.infeccion_grave || !!s.flags.sepsis_reciente || !!s.flags.enf_reumatologica},
+    {id:'imc_ge_30', peso:1, cond:s=> s.imc!=null && s.imc>=30},
+    {id:'terapia_hormonal', peso:1, cond:s=> !!s.flags.aco_trh}
+  ];
+  function paduaSum(s){
+    let score = 0, fired = [];
+    for(const r of PADUA_RULES){ try{ if(r.cond(s)){ score+=r.peso; fired.push(`${r.peso}p → ${r.id}`); } }catch(_){ } }
+    return {score, fired};
+  }
+  function paduaRiskLabel(score){
+    if(score<4) return {label:'Bajo', cls:'low'};
+    return {label:'Alto', cls:'high'};
+  }
+  function computePaduaAndPaint(){
+    const s = collectState();
+    const {score, fired} = paduaSum(s);
+    const rk = paduaRiskLabel(score);
+    document.getElementById('paduaScore').textContent = score;
+    const pill=document.getElementById('paduaRisk'); pill.textContent=rk.label; pill.className='pill '+rk.cls;
+    document.getElementById('paduaTrace').textContent = fired.length? fired.join('\n') : '—';
+    return {score, risk: rk.label, trace: fired};
+  }
+
+  const IMPROVE_VTE_RULES = [
+    {id:'tev_prev', peso:3, cond:s=> !!s.flags.tev_prev},
+    {id:'trombofilia', peso:2, cond:s=> !!s.flags.trombofilia},
+    {id:'paralisis_mmii', peso:2, cond:s=> !!s.flags.paralisis_mmii},
+    {id:'cancer_activo', peso:2, cond:s=> !!s.flags.cancer_activo},
+    {id:'inmovilizacion_ge7d', peso:1, cond:s=> !!s.flags.cama_72h},
+    {id:'uci', peso:1, cond:s=> !!s.flags.uci},
+    {id:'edad_ge_60', peso:1, cond:s=> s.edad!=null && s.edad>=60},
+    {id:'ddimero_ge_2x', peso:2, cond:s=> s.dd!=null && s.dd>=2},
+    {id:'fumador', peso:1, cond:s=> !!s.flags.tabaquismo}
+  ];
+  function improveVteSum(s){
+    let score = 0, fired = [];
+    for(const r of IMPROVE_VTE_RULES){ try{ if(r.cond(s)){ score+=r.peso; fired.push(`${r.peso}p → ${r.id}`); } }catch(_){ } }
+    return {score, fired};
+  }
+  function improveVteRiskLabel(score){
+    if(score<2) return {label:'Bajo', cls:'low'};
+    if(score<=4) return {label:'Moderado', cls:'mod'};
+    return {label:'Alto', cls:'high'};
+  }
+  function computeImproveVteAndPaint(){
+    const s = collectState();
+    const {score, fired} = improveVteSum(s);
+    const rk = improveVteRiskLabel(score);
+    document.getElementById('improveVteScore').textContent = score;
+    const pill=document.getElementById('improveVteRisk'); pill.textContent=rk.label; pill.className='pill '+rk.cls;
+    document.getElementById('improveVteTrace').textContent = fired.length? fired.join('\n') : '—';
+    return {score, risk: rk.label, trace: fired};
+  }
+
+  const IMPROVE_BLEED_RULES = [
+    {id:'sexo_masculino', peso:1, cond:s=> s.sexo==='M'},
+    {id:'edad_40_84', peso:1.5, cond:s=> s.edad!=null && s.edad>=40 && s.edad<=84},
+    {id:'edad_ge_85', peso:3.5, cond:s=> s.edad!=null && s.edad>=85},
+    {id:'insuf_renal_moderada', peso:1.5, cond:s=> s.cg!=null && s.cg>=30 && s.cg<60},
+    {id:'insuf_renal_severa', peso:2.5, cond:s=> s.cg!=null && s.cg<30},
+    {id:'cancer_activo', peso:2, cond:s=> !!s.flags.cancer_activo},
+    {id:'enf_reumatologica', peso:2, cond:s=> !!s.flags.enf_reumatologica},
+    {id:'cvc', peso:2, cond:s=> !!s.flags.cvc},
+    {id:'uci', peso:2.5, cond:s=> !!s.flags.uci},
+    {id:'insuf_hepatica', peso:2.5, cond:s=> !!s.flags.insuf_hepatica},
+    {id:'plaquetas_lt_50', peso:4, cond:s=> s.plaquetas!=null && s.plaquetas<50},
+    {id:'sangrado_3m', peso:4, cond:s=> !!s.flags.sangrado_3m},
+    {id:'ulcera_activa', peso:4.5, cond:s=> !!s.flags.ulcera_activa}
+  ];
+  function improveBleedSum(s){
+    let score = 0, fired = [];
+    for(const r of IMPROVE_BLEED_RULES){ try{ if(r.cond(s)){ score+=r.peso; fired.push(`${r.peso}p → ${r.id}`); } }catch(_){ } }
+    return {score, fired};
+  }
+  function improveBleedRiskLabel(score){
+    if(score<7) return {label:'Bajo', cls:'low'};
+    return {label:'Alto', cls:'high'};
+  }
+  function computeImproveBleedAndPaint(){
+    const s = collectState();
+    const {score, fired} = improveBleedSum(s);
+    const rk = improveBleedRiskLabel(score);
+    document.getElementById('improveBleedScore').textContent = round(score,1);
+    const pill=document.getElementById('improveBleedRisk'); pill.textContent=rk.label; pill.className='pill '+rk.cls;
+    document.getElementById('improveBleedTrace').textContent = fired.length? fired.join('\n') : '—';
+    return {score, risk: rk.label, trace: fired};
+  }
+
+  const VIENNA_RULES = [
+    {id:'sexo_masculino', peso:1, cond:s=> s.sexo==='M'},
+    {id:'localizacion_proximal', peso:1, cond:s=> s.vienna_loc==='proximal'},
+    {id:'localizacion_ep', peso:1, cond:s=> s.vienna_loc==='ep'},
+    {id:'ddimero_gt_4x', peso:1, cond:s=> s.dd!=null && s.dd>4}
+  ];
+  function viennaSum(s){
+    let score = 0, fired = [];
+    for(const r of VIENNA_RULES){ try{ if(r.cond(s)){ score+=r.peso; fired.push(`${r.peso}p → ${r.id}`); } }catch(_){ } }
+    return {score, fired};
+  }
+  function viennaRiskLabel(score){
+    if(score<2) return {label:'Bajo', cls:'low'};
+    return {label:'Alto', cls:'high'};
+  }
+  function computeViennaAndPaint(){
+    const s = collectState();
+    const {score, fired} = viennaSum(s);
+    const rk = viennaRiskLabel(score);
+    document.getElementById('viennaScore').textContent = score;
+    const pill=document.getElementById('viennaRisk'); pill.textContent=rk.label; pill.className='pill '+rk.cls;
+    document.getElementById('viennaTrace').textContent = fired.length? fired.join('\n') : '—';
+    return {score, risk: rk.label, trace: fired};
+  }
+
+  function computeAll(){
+    paintKPIs();
+    const caprini = computeCapriniAndPaint();
+    const padua = computePaduaAndPaint();
+    const improveVte = computeImproveVteAndPaint();
+    const improveBleed = computeImproveBleedAndPaint();
+    const vienna = computeViennaAndPaint();
+    return {caprini, padua, improveVte, improveBleed, vienna};
+  }
+
+  function saveEvaluation(){
+    if(!storageAvailable('localStorage')){
+      alert('Navegador no soporta almacenamiento local.');
+      return;
+    }
+    const state = collectState();
+    const results = {
+      caprini: computeCapriniAndPaint(),
+      padua: computePaduaAndPaint(),
+      improveVte: computeImproveVteAndPaint(),
+      improveBleed: computeImproveBleedAndPaint(),
+      vienna: computeViennaAndPaint()
+    };
+    const record = {
+      id: state.patient_id,
+      timestamp: new Date().toISOString(),
+      data: state,
+      results
+    };
+    try {
+      const saved = JSON.parse(localStorage.getItem('hematorisk_pro_evaluations') || '[]');
+      saved.push(record);
+      localStorage.setItem('hematorisk_pro_evaluations', JSON.stringify(saved));
+      showMsg('Guardado correctamente', 'ok');
+    } catch (e) {
+      showMsg('Error al guardar', 'warn');
+    }
+  }
+
+  function exportToExcel(){
+    if(!storageAvailable('localStorage')) return;
+    try {
+      const saved = JSON.parse(localStorage.getItem('hematorisk_pro_evaluations') || '[]');
+      if(saved.length === 0){
+        alert('No hay datos guardados.');
+        return;
+      }
+      const b = (val) => val ? 'SÍ' : 'NO';
+      const headers = [
+        'ID Paciente', 'Fecha', 'Nombre', 'Apellido Pat', 'Apellido Mat',
+        'Sexo', 'Edad', 'Peso', 'Talla', 'IMC', 'Creatinina', 'ClCr',
+        'Plaquetas', 'INR', 'D-dímero', 'Vienna Loc',
+        'Obesidad(Auto)', 'Renal Mod(Auto)', 'Renal Sev(Auto)',
+        'Embarazo', 'ACO/TRH', 'Obs. Adversa',
+        'UCI', 'Inf. Grave', 'Sepsis <1m', 'IAM <1m', 'ACV',
+        'Mov. Reducida', 'Cama >72h', 'Yeso', 'CVC',
+        'ICC', 'EPOC', 'Insuf. Hepática', 'Enf. Reumato',
+        'Diabetes', 'Tabaquismo', 'Cáncer', 'IBD',
+        'Sangrado', 'Úlcera', 'Trombofilia', 'Transfusión', 'Quimio',
+        'TEV Prev', 'SVT Prev', 'Cáncer Prev', 'Fam TEV', 
+        'Lesión Med', 'Parálisis',
+        'Várices', 'Edema',
+        'Artroplastia', 'Fractura', 'Trauma', 'Cx Mayor',
+        'Laparo >45', 'Cx Menor', 'Cx Mayor 1m',
+        'Cx >2h', 'Artroscopía',
+        'Caprini Score', 'Caprini Riesgo', 
+        'Padua Score', 'Padua Riesgo',
+        'IMP VTE Score', 'IMP VTE Riesgo',
+        'IMP Bleed Score', 'IMP Bleed Riesgo',
+        'Vienna Score', 'Vienna Riesgo'
+      ];
+      
+      let csvContent = headers.join(',') + '\n';
+      
+      saved.forEach(record => {
+        const f = record.data.flags || {}; 
+        const d = record.data;
+        const r = record.results;
+
+        const row = [
+          record.id, record.timestamp.slice(0,10),
+          `"${d.nombre}"`, `"${d.ap_pat}"`, `"${d.ap_mat}"`,
+          d.sexo, d.edad, d.peso, d.talla, d.imc, d.cr, d.cg,
+          d.plaquetas, d.inr, d.dd, d.vienna_loc,
+          b(f.auto_imc_30), b(f.auto_ren_mod), b(f.auto_ren_sev),
+          b(f.embarazo_puerperio), b(f.aco_trh), b(f.obst_adversa_hist),
+          b(f.uci), b(f.infeccion_grave), b(f.sepsis_reciente), b(f.iam_reciente), b(f.acv),
+          b(f.mov_reducida), b(f.cama_72h), b(f.yeso), b(f.cvc),
+          b(f.icc), b(f.epoc), b(f.insuf_hepatica), b(f.enf_reumatologica),
+          b(f.diabetes_insulina), b(f.tabaquismo), b(f.cancer_activo), b(f.ibd),
+          b(f.sangrado_3m), b(f.ulcera_activa), b(f.trombofilia), b(f.transfusion_reciente), b(f.quimioterapia),
+          b(f.tev_prev), b(f.svt_prev), b(f.cancer_prev), b(f.familiar_tev),
+          b(f.lesion_medular), b(f.paralisis_mmii),
+          b(f.varices), b(f.edema_mmii),
+          b(f.artroplastia), b(f.fractura_mayor), b(f.trauma_mayor), b(f.cx_mayor),
+          b(f.laparo_45), b(f.cirugia_menor), b(f.cirugia_mayor_ult_mes),
+          b(f.cirugia_gt_2h), b(f.artroscopia),
+          r.caprini.score, `"${r.caprini.risk}"`,
+          r.padua.score, `"${r.padua.risk}"`,
+          r.improveVte.score, `"${r.improveVte.risk}"`,
+          r.improveBleed.score, `"${r.improveBleed.risk}"`,
+          r.vienna.score, `"${r.vienna.risk}"`
+        ];
+        csvContent += row.join(',') + '\n';
+      });
+
+      const blob = new Blob(['\uFEFF' + csvContent], { type: 'text/csv;charset=utf-8;' });
+      const link = document.createElement('a');
+      const url = URL.createObjectURL(blob);
+      link.setAttribute('href', url);
+      link.setAttribute('download', `hemato_db_${new Date().toISOString().slice(0,10)}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      showMsg('Exportado correctamente', 'ok');
+    } catch (e) {
+      showMsg('Error al exportar', 'warn');
+    }
+  }
+
+  function clearForm(){
+    if(!confirm('¿Limpiar formulario?')) return;
+    document.querySelectorAll('input').forEach(i => {
+      if(i.type==='checkbox') i.checked = false;
+      else i.value = '';
+    });
+    document.querySelectorAll('select').forEach(s => s.selectedIndex = 0);
+    document.querySelectorAll('.kpi span, .pill, pre').forEach(e => e.textContent = '—');
+    showMsg('Formulario limpio', 'ok');
+  }
+
+  function showMsg(text, type=''){
+    const msg = document.getElementById('msg');
+    msg.textContent = text;
+    msg.className = `msg ${type}`;
+    setTimeout(()=>{ msg.textContent=''; msg.className='msg'; }, 4000);
+  }
+
+  document.addEventListener('DOMContentLoaded', ()=>{
+    document.getElementById('doe').value = new Date().toISOString().split('T')[0];
+    document.getElementById('btnCalcular').addEventListener('click', computeAll);
+    document.getElementById('btnCalcular_top').addEventListener('click', computeAll);
+    document.getElementById('btnGuardar').addEventListener('click', saveEvaluation);
+    document.getElementById('btnGuardar_top').addEventListener('click', saveEvaluation);
+    document.getElementById('btnExportar').addEventListener('click', exportToExcel);
+    document.getElementById('btnExportar_top').addEventListener('click', exportToExcel);
+    document.getElementById('btnLimpiar').addEventListener('click', clearForm);
+    document.getElementById('btnLimpiar_top').addEventListener('click', clearForm);
+    const inputs = document.querySelectorAll('input, select');
+    inputs.forEach(el=> el.addEventListener('input', paintKPIs));
+    inputs.forEach(el=> el.addEventListener('change', paintKPIs));
+    paintKPIs();
+  });
+</script>
+</body>
+</html>
